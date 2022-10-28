@@ -1,3 +1,4 @@
+#export KAFKA_OPTS=' -javaagent:/usr/local/kafka-server/libs/jmx_prometheus_javaagent-0.16.1.jar=7075:/opt/kafka-setup/kafka_2.13-3.3.1/config/jmx_exporter.yml'
 lowercaseOutputName: true
 
 rules:
