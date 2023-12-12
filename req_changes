@@ -1,0 +1,17 @@
+Dear Sir,
+ 
+While inserting new beneficiary from FeBA to MB,  BENMASTDTL_BRANCH_NAME is showing as NULL for some of the beneficiaries due to that we are not table to initiate transactions. So please follow steps while inserting.
+ 
+    -> With in Bank (when PAYM -> NETWORK_ID='WIB' and BANK_TYPE='HBK') :
+        1. Pass value of BANK_IDENTIFIER of PAYM to below BENMASTDTL_IFSC string.
+        2. select MBRN_NAME from KBLMBANK.mbrn where MBRN_CODE=substr(BENMASTDTL_IFSC,2,3)
+        3. Use this value while insert.
+   
+    -> Other Bank (when PAYM -> NETWORK_ID='NFT' and BANK_TYPE='OBK') :
+        1. Pass value of BANK_IDENTIFIER of PAYM to below BENMASTDTL_IFSC string.
+        2. select IFSRID_BRN_PLACE from KBLMBANK.ifsrid where IFSRID_IFS_CODE=BENMASTDTL_IFSC
+        3. Use this value while insert.
+ 
+select permission given to CDCUSER to KBLMBANK.mbrn and KBLMBANK.ifsrid table.
+ 
+Note: If the record does not exist then do not insert that record to MB.
